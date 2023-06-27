@@ -1,3 +1,3 @@
 # ComicApp
 
-goooooooooooo
+A mobile app about read comic 
