@@ -16,7 +16,6 @@ import com.example.comicapp.viewholder.ComicViewHolder;
 import java.util.List;
 
 public class ComicAdapter extends RecyclerView.Adapter<ComicViewHolder> {
-
     private Context context;
     private List<Comic> comicList;
     private LayoutInflater inflater;
@@ -31,12 +30,20 @@ public class ComicAdapter extends RecyclerView.Adapter<ComicViewHolder> {
         notifyDataSetChanged();
     }
 
+    public void setFilterList(List<Comic> filterList){
+        this.comicList = filterList;
+        notifyDataSetChanged();
+    }
+
     @NonNull
     @Override
     public ComicViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = inflater.inflate(R.layout.item_comic, parent, false);
+        //return new ComicViewHolder(view, context);
+        ComicViewHolder viewHolder = new ComicViewHolder(view, context);
+        viewHolder.setComicList(comicList);
 
-        return new ComicViewHolder(view, context);
+        return viewHolder;
     }
 
     @Override
