@@ -7,14 +7,12 @@ import java.io.Serializable;
 
 public class Comic implements Serializable {
     @SerializedName("id")
-
     private String ComicId;
     @SerializedName("tenTruyen")
     private String ComicName;
     @SerializedName("tenChap")
     private String ChapterName;
     @SerializedName("linkAnh")
-
     private String ImageLink;
 
     public Comic(String comicId, String comicName, String chapterName, String imageLink) {

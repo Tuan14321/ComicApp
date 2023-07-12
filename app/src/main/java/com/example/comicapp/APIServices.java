@@ -2,6 +2,7 @@ package com.example.comicapp;
 
 import com.example.comicapp.API.ChapterApiEndPoint;
 import com.example.comicapp.API.ComicApiEndPoint;
+import com.example.comicapp.API.ViewChapApiEndPoint;
 
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
@@ -14,6 +15,7 @@ public class APIServices {
 
     private ComicApiEndPoint comicApiEndPoint;
     private ChapterApiEndPoint chapterApiEndPoint;
+    private ViewChapApiEndPoint viewChapApiEndPoint;
 
     public APIServices() {
         retrofit = new Retrofit.Builder().baseUrl(BASE_URL)
@@ -25,6 +27,11 @@ public class APIServices {
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         chapterApiEndPoint = retrofit.create(ChapterApiEndPoint.class);
+
+        retrofit = new Retrofit.Builder().baseUrl(URL_CHAP)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+        viewChapApiEndPoint = retrofit.create(ViewChapApiEndPoint.class);
     }
 
     private static APIServices instance = null;
@@ -43,11 +50,15 @@ public class APIServices {
         return chapterApiEndPoint;
     }
 
+    public ViewChapApiEndPoint getViewChapsApiEndPoint(){return  viewChapApiEndPoint;}
+
     public static ComicApiEndPoint getComicApiEndPoint() {
         return getInstance().getComicsApiEndPoint();
     }
     public static ChapterApiEndPoint getChapterApiEndPoint(){
         return getInstance().getChaptersApiEndPoint();
-
+    }
+    public static ViewChapApiEndPoint getViewChapApiEndPoint(){
+        return getInstance().getViewChapsApiEndPoint();
     }
 }

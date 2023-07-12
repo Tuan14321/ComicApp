@@ -76,7 +76,7 @@ public class ChapActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<List<Chapter>> call, Throwable t) {
-
+                Toast.makeText(ChapActivity.this, "Fail", Toast.LENGTH_SHORT).show();
             }
         });
     }

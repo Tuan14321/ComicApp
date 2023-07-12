@@ -2,12 +2,16 @@ package com.example.comicapp.object;
 
 import com.google.gson.annotations.SerializedName;
 
-public class Chapter {
+import java.io.Serializable;
+
+public class Chapter implements Serializable {
+    @SerializedName("id")
     private String ChapId;
     @SerializedName("tenchap")
     private String ChapterName;
     @SerializedName("ngaynhap")
     private String DatePost;
+
 
     public Chapter(String chapId, String chapterName, String datePost) {
         ChapId = chapId;

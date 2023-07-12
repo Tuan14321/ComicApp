@@ -10,48 +10,48 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.comicapp.R;
 import com.example.comicapp.object.Chapter;
-import com.example.comicapp.object.Comic;
+import com.example.comicapp.object.ViewChap;
 import com.example.comicapp.viewholder.ChapterViewHolder;
 import com.example.comicapp.viewholder.ComicViewHolder;
+import com.example.comicapp.viewholder.ViewChapViewHolder;
 
 import java.util.List;
 
-public class ChapterAdapter extends RecyclerView.Adapter<ChapterViewHolder> {
+public class ViewChapAdapter extends RecyclerView.Adapter<ViewChapViewHolder>{
+
     private Context context;
-    private List<Chapter> chapterList;
+    private List<ViewChap> viewChapList;
     private LayoutInflater inflater;
 
-    public ChapterAdapter(Context context){
+    public ViewChapAdapter(Context context){
         this.context = context;
         inflater = LayoutInflater.from(context);
     }
 
-    public void setDataChap(List<Chapter> list){
-        this.chapterList = list;
+    public void setDataViewChap(List<ViewChap> list){
+        this.viewChapList = list;
         notifyDataSetChanged();
     }
     @NonNull
     @Override
-    public ChapterViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public ViewChapViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = inflater.inflate(R.layout.item_chapter, parent, false);
-        ChapterViewHolder viewHolder = new ChapterViewHolder(view, context);
-        viewHolder.setChapterList(chapterList);
-        return viewHolder;
+        return new ViewChapViewHolder(view, context);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ChapterViewHolder holder, int position) {
-        Chapter c = chapterList.get(position);
+    public void onBindViewHolder(@NonNull ViewChapViewHolder holder, int position) {
+        ViewChap c = viewChapList.get(position);
         if(c == null){
             return;
         }
-        holder.setChapter(c, this.context);
+        holder.setViewChap(c, this.context);
     }
 
     @Override
     public int getItemCount() {
-        if (chapterList != null) {
-            return chapterList.size();
+        if (viewChapList != null) {
+            return viewChapList.size();
         }
         return 0;
     }
